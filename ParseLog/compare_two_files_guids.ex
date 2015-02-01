@@ -48,10 +48,6 @@ defmodule CompareFileGuids do
     build_map_of_guids_from_list(tail, Map.put(map, elem(head, 1), head))
   end
 
-  def get_guid_from_line(line) do
-    String
-  end
-
   def get_data_between_brackets(tuple) do
     {timestamp, guid, logdata} = tuple
     Regex.run(~r/\{([^)]+)\}/, logdata) |> List.last
