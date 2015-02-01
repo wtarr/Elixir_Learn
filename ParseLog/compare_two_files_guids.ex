@@ -10,8 +10,7 @@ defmodule CompareFileGuids do
 
   def loadFileIntoMap(filename) do
    {_result, device} = load(filename)
-   linesAsCleanListOfTuples = get_list_of_lines(device)
-   build_map_of_guids_from_list(linesAsCleanListOfTuples, Map.new)
+   get_list_of_lines(device) |> build_map_of_guids_from_list Map.new
   end
 
   def load(filename) do
@@ -48,8 +47,8 @@ defmodule CompareFileGuids do
     build_map_of_guids_from_list(tail, Map.put(map, elem(head, 1), head))
   end
 
-  def get_data_between_brackets(tuple) do
-    {timestamp, guid, logdata} = tuple
+  def get_data_between_brackets(log_event) do
+    {timestamp, guid, logdata} = log_event
     Regex.run(~r/\{([^)]+)\}/, logdata) |> List.last
   end
 
