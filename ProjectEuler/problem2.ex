@@ -3,17 +3,17 @@ defmodule Problem2 do
 
   # tail rec fibonacci inspired from:
   # http://stackoverflow.com/a/14294705/4408786
-  def fib_tr(max) do
-    fib_tr(max, 0, 1, 1, 0)
+  defp fib_tr(max) do
+    fib_tr(max, 1, 1, 0)
   end
 
-  defp fib_tr(max, counter, prev, current, sum) do
-    nextInSeq = prev + current
+  defp fib_tr(max, prev, current, sum) do    
     if (current < max) do
+      nextInSeq = prev + current
       if rem(nextInSeq, 2) == 0 do
         sum = sum + nextInSeq
       end
-      fib_tr(max, counter+1, current, nextInSeq, sum)
+      fib_tr(max, current, nextInSeq, sum)
     else
       sum
     end
