@@ -7,7 +7,7 @@ defmodule Problem2 do
     fib_tr(max, 1, 1, 0)
   end
 
-  defp fib_tr(max, prev, current, sum) do    
+  defp fib_tr(max, prev, current, sum) do
     if (current < max) do
       nextInSeq = prev + current
       if rem(nextInSeq, 2) == 0 do
@@ -19,7 +19,7 @@ defmodule Problem2 do
     end
   end
 
-  def run() do
+  def solve() do
     fib_tr 4_000_000
   end
 end
