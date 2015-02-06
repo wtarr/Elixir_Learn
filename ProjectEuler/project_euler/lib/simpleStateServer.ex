@@ -30,4 +30,8 @@ defmodule StateServer do
     get(pid)
   end
 
+  def exit(pid) do
+    send pid, {self, :exit}
+  end
+  
 end
