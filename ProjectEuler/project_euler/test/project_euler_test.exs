@@ -30,4 +30,9 @@ test "Test Problem 4 using Tasks" do
   assert result == 906609
 end
 
+test "Test Higher order function" do
+  result = HigherOrderFunction.someaction()
+  assert result == 3
+end
+
 end
