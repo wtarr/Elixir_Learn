@@ -15,25 +15,16 @@ defmodule Problem17 do
   end
 
   def resolve(lookup, x, acc) do
-
-    if (x < 100) do
-      acc = handleLessThan100 lookup, acc, x 
+    cond do
+      (x < 100) ->
+        handleLessThan100 lookup, acc, x
+      ((x >= 100) and (x < 1000) and (rem(x, 100) == 0)) -> # 100, 200 ...
+        handleHundreds lookup, acc, x
+      (x > 100 and x < 1000 and (rem(x, 100) != 0)) -> # 101, 202, 303 ...
+        handleHundredsOther lookup, acc, x
+      (x == 1000) ->
+        acc + String.length("onethousand")
     end
-
-    if (x >= 100) and (x < 1000) and (rem(x, 100) == 0) do # 100, 200 ...
-      acc = handleHundreds lookup, acc, x
-    end
-      
-    if x > 100 and x < 1000 and (rem(x, 100) != 0) do # 101, 202, 303 ...
-      acc = handleHundredsOther lookup, acc, x
-    end
-
-    if x == 1000 do
-      acc = acc + String.length("onethousand")
-    end
-
-    acc
-
   end
 
   def findLength(line) do
