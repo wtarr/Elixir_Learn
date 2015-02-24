@@ -39,7 +39,7 @@ test "P17 lookup between 1 - 99" do
   lookup = HashDict.new
   lookup = HashDict.put(lookup, 1, 3)
   lookup
-  num = Problem17.handleLessThan100(lookup, 0, 1) 
+  num = Problem17.handleLessThan100(lookup, 0, 1)
   assert num == 3
 end
 
@@ -57,12 +57,12 @@ test "P17 lookup between 101 - 199" do
   lookup = HashDict.put(lookup, 1,  String.length "one")
   lookup = HashDict.put(lookup, 99,  String.length "ninetynine")
   lookup
-  num = Problem17.handleHundredsOther(lookup, 0, 199) 
+  num = Problem17.handleHundredsOther(lookup, 0, 199)
   assert num == sut
 end
 
 test "P17 test process line and find length of line" do
-  len = Problem17.findLength "one-hun" 
+  len = Problem17.findLength "one-hun"
   assert len == 6
 end
 
@@ -87,6 +87,14 @@ end
 
 test "Problem 17 Solve gives 21124" do
   assert Problem17.solve == 21124
+end
+
+test "Problem 5 - test possible candidate tester" do
+  candidate = 2520
+  result = Enum.reduce(1..10, 0, fn x, acc ->
+    acc + rem(candidate, x)
+  end)
+  assert result == 0
 end
 
 
