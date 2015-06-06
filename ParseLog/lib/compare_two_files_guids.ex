@@ -1,8 +1,8 @@
 defmodule CompareFileGuids do
 
-  def main do
-    mapHasMore = loadFileIntoMap("hasmore.data")
-    mapHasLess = loadFileIntoMap("hasless.data")
+  def main do    
+    mapHasMore = loadFileIntoMap("data/hasmore.data")
+    mapHasLess = loadFileIntoMap("data/hasless.data")
     s1 = Enum.into(Map.keys(mapHasMore), HashSet.new)
     s2 = Enum.into(Map.keys(mapHasLess), HashSet.new)
     Set.difference(s1, s2) |> Set.to_list
@@ -34,7 +34,7 @@ defmodule CompareFileGuids do
   end
 
   def process_line(line, lines) do
-    [Enum.map(String.split(line, "|"), fn(x) -> String.lstrip x |> String.rstrip end) |> List.to_tuple] ++ lines
+    [Enum.map(String.split(line, "|"), fn(x) -> String.lstrip x |> String.rstrip end) |> List.to_tuple | lines]
   end
 
   # exit clause
