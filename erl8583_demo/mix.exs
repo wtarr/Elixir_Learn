@@ -1,8 +1,8 @@
-defmodule Erl8583Demo1.Mixfile do
+defmodule Erl8583Demo.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :erl8583_demo1,
+    [app: :erl8583_demo,
      version: "0.0.1",
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
